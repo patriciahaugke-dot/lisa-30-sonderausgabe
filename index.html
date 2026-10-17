@@ -247,10 +247,10 @@
     <h1>LISA</h1>
     <p class="tagline">Das Magazin über eine echt besondere Frau</p>
     <button class="sticker" id="sticker" type="button" aria-label="Jubiläums-Sticker antippen"><span>30<small>JAHRE!</small></span></button>
-    <ul class="teasers"><li>Award: Bestes Outfit</li><li>Geleakt: der Skandal-Chat</li><li>Großes Horoskop</li><li>Mit vielen Beweisfotos</li></ul>
+    <ul class="teasers"><li>Award: Bestes Outfit</li><li>Geleakt: der Skandal-Chat</li><li>Live-Video vom Rammstein-Konzert</li><li>Mit vielen Beweisfotos</li></ul>
   </header>
 
-  <div class="progress" aria-live="polite"><span id="ptext">0 von 14 entdeckt</span><div class="bar"><span id="pbar"></span></div></div>
+  <div class="progress" aria-live="polite"><span id="ptext">0 von 13 entdeckt</span><div class="bar"><span id="pbar"></span></div></div>
 
   <div class="grid">
     <!-- stamp -->
@@ -486,13 +486,6 @@
       </div>
     </section>
 
-    <!-- 11 horoscope -->
-    <section class="tile wide" style="--c:#FFD23F;--t:#16131F" data-id="horo">
-      <span class="found">✓ ENTDECKT</span>
-      <p class="kick">Großes Horoskop</p>
-      <h2>Was die Sterne für deine 30er sagen</h2>
-      <div class="play"><div class="zodiac" id="zodiac">🔮</div><p class="note" id="horoText" style="font-size:1.3rem">Die Kristallkugel wartet …</p><button class="b" id="horoBtn" type="button" style="background:#16131F;color:#FFD23F">Sterne befragen ✨</button></div>
-    </section>
   </div>
 
   <div class="end" id="end"><p id="endText">Entdecke alle Rubriken, dann wartet ganz hinten noch ein Brief auf dich.</p><button class="b" id="early" type="button">Ich bin ungeduldig, Brief jetzt lesen 💌</button></div>
@@ -516,7 +509,7 @@
 (function () {
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var $ = function (id) { return document.getElementById(id); };
-  var TOTAL = 14, found = {}, nfound = 0, letter = $("letter");
+  var TOTAL = 13, found = {}, nfound = 0, letter = $("letter");
 
   /* particles */
   var cv = $("fx"), ctx = cv.getContext("2d"), parts = [], running = false;
@@ -728,15 +721,6 @@
   /* rock am ring */
   $("voidBtn").addEventListener("click", function () { $("void").classList.add("on"); shake(tile("rar")); note("rar", "Statt Festival hieß es: zuhause bleiben. Nachgeholt wurde mit Rammstein 2022! 🤘"); $("planB").classList.add("on"); $("voidBtn").disabled = true; $("voidBtn").style.opacity = .5; done("rar"); });
 
-  /* 11 horoscope */
-  var horos = ["Die 30er bringen dir mehr Lachen, als dein Bauch verkraften kann. Bauchmuskeltraining wird überflüssig.",
-    "Saturn steht günstig: Ein Spieleabend kündigt sich an. Schlaf wird überbewertet.",
-    "Venus empfiehlt: mehr Zeit für dich, Paul, Lotta und Charlie. Und für Kuchen.",
-    "Jupiter meldet: Die 30er werden dein bisher lustigstes Jahrzehnt. Wir haben ja auch schon ordentlich vorgelegt.",
-    "Die Sterne sind sich einig: Mit 30 wirst du noch großartiger. Was eigentlich kaum möglich ist."];
-  var hz = ["🔮", "🌙", "⭐", "🪐", "✨"], hi = (Math.random() * horos.length) | 0;
-  $("horoBtn").addEventListener("click", function () { hi = (hi + 1) % horos.length; $("horoText").textContent = horos[hi]; $("zodiac").textContent = hz[hi];
-    var c = center($("zodiac")); emojis(c.x, c.y, ["⭐", "✨"], 5); done("horo"); $("horoBtn").textContent = "Nochmal fragen ✨"; });
 })();
 </script>
 </body>
